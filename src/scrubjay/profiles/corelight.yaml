@@ -1,0 +1,622 @@
+profile:
+  name: "corelight"
+  version: "1.0"
+  description: "Corelight/Zeek network telemetry (conn, dns, http, ssl, x509, ntlm, files)"
+  sourcetypes:
+    - "corelight_conn"
+    - "corelight_dns"
+    - "corelight_http"
+    - "corelight_ssl"
+    - "corelight_x509"
+    - "corelight_ntlm"
+    - "corelight_files"
+  indexes:
+    - "corelight"
+    - "zeek"
+  author: "esinta"
+  url: "https://docs.zeek.org/en/current/script-reference/log-files.html"
+
+internal_domains:
+  - "*.corp.internal"
+  - "*.yourcompany.com"
+
+fields:
+  # ═══════════════════════════════════════════════════════════════
+  # conn.log — Connection records
+  # Almost entirely passthrough; IPs and ports are the analytical value.
+  # If your org considers internal IPs sensitive, override via user config.
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "id.orig_h"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Source IP address — analytical value for threat hunting"
+
+  - field: "id.orig_p"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Source port"
+
+  - field: "id.resp_h"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Destination IP address"
+
+  - field: "id.resp_p"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Destination port"
+
+  - field: "proto"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Transport protocol (tcp, udp, icmp)"
+
+  - field: "service"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Detected application protocol (http, ssl, dns, etc.)"
+
+  - field: "duration"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Connection duration in seconds"
+
+  - field: "orig_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes sent by originator"
+
+  - field: "resp_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes sent by responder"
+
+  - field: "conn_state"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Connection state code (SF, S0, REJ, RSTO, etc.)"
+
+  - field: "missed_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes missed due to content gaps"
+
+  - field: "history"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Connection state history string"
+
+  - field: "orig_pkts"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Packets from originator"
+
+  - field: "resp_pkts"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Packets from responder"
+
+  - field: "orig_ip_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "IP-level bytes from originator"
+
+  - field: "resp_ip_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "IP-level bytes from responder"
+
+  - field: "uid"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Zeek connection UID"
+
+  - field: "ts"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Timestamp"
+
+  # ═══════════════════════════════════════════════════════════════
+  # dns.log — DNS query/response records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "query"
+    type: HOSTNAME
+    tier: 1
+    description: "Queried domain name — internal hostnames reveal infrastructure. External domains should ideally pass through; use internal_domains config to control scope."
+
+  - field: "answers"
+    type: FREETEXT
+    tier: 2
+    description: "DNS response answers — resolved IPs/CNAMEs may contain internal hostnames"
+
+  - field: "trans_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "DNS transaction ID"
+
+  - field: "rtt"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Round-trip time for the query"
+
+  - field: "qclass"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Query class numeric value"
+
+  - field: "qclass_name"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Query class name (C_INTERNET)"
+
+  - field: "qtype"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Query type numeric value"
+
+  - field: "qtype_name"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Query type name (A, AAAA, CNAME, etc.)"
+
+  - field: "rcode"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Response code numeric value"
+
+  - field: "rcode_name"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Response code name (NOERROR, NXDOMAIN, etc.)"
+
+  - field: "AA"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Authoritative Answer flag"
+
+  - field: "TC"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Truncation flag"
+
+  - field: "RD"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Recursion Desired flag"
+
+  - field: "RA"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Recursion Available flag"
+
+  - field: "Z"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Reserved DNS flag"
+
+  - field: "rejected"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether the query was rejected"
+
+  # ═══════════════════════════════════════════════════════════════
+  # http.log — HTTP request/response records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "host"
+    type: HOSTNAME
+    tier: 1
+    description: "HTTP Host header — internal hosts reveal infrastructure"
+
+  - field: "uri"
+    type: URL_INTERNAL
+    tier: 1
+    description: "HTTP request URI — may contain tokens, session IDs, usernames"
+
+  - field: "referrer"
+    type: URL_INTERNAL
+    tier: 1
+    description: "HTTP Referer header — may contain internal URLs"
+
+  - field: "username"
+    type: USERNAME
+    tier: 1
+    description: "HTTP basic auth username"
+
+  - field: "user_agent"
+    type: FREETEXT
+    tier: 2
+    description: "User-Agent string — can contain custom internal app names"
+
+  - field: "orig_filenames"
+    type: FILENAME
+    tier: 2
+    description: "Uploaded filenames"
+
+  - field: "resp_filenames"
+    type: FILENAME
+    tier: 2
+    description: "Downloaded filenames"
+
+  - field: "post_body"
+    type: FREETEXT
+    tier: 2
+    description: "HTTP POST body — may contain form data with PII"
+
+  - field: "trans_depth"
+    type: PASSTHROUGH
+    tier: 3
+    description: "HTTP transaction depth (pipelining)"
+
+  - field: "method"
+    type: PASSTHROUGH
+    tier: 3
+    description: "HTTP method (GET, POST, etc.)"
+
+  - field: "status_code"
+    type: PASSTHROUGH
+    tier: 3
+    description: "HTTP response status code"
+
+  - field: "status_msg"
+    type: PASSTHROUGH
+    tier: 3
+    description: "HTTP response status message"
+
+  - field: "info_code"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Informational response code"
+
+  - field: "info_msg"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Informational response message"
+
+  - field: "request_body_len"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Request body length"
+
+  - field: "response_body_len"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Response body length"
+
+  - field: "orig_fuids"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Zeek file UIDs for request body"
+
+  - field: "resp_fuids"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Zeek file UIDs for response body"
+
+  - field: "orig_mime_types"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Request MIME types"
+
+  - field: "resp_mime_types"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Response MIME types"
+
+  # ═══════════════════════════════════════════════════════════════
+  # ssl.log — SSL/TLS handshake records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "server_name"
+    type: HOSTNAME
+    tier: 1
+    description: "TLS SNI field — reveals which internal service was accessed"
+
+  - field: "subject"
+    type: FREETEXT
+    tier: 1
+    description: "x509 certificate subject — CN may contain employee names or internal hosts"
+
+  - field: "issuer"
+    type: FREETEXT
+    tier: 1
+    description: "x509 certificate issuer — internal CA names reveal org structure"
+
+  - field: "client_subject"
+    type: FREETEXT
+    tier: 2
+    description: "Client certificate subject (mutual TLS environments)"
+
+  - field: "client_issuer"
+    type: FREETEXT
+    tier: 2
+    description: "Client certificate issuer"
+
+  - field: "version"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SSL/TLS version"
+
+  - field: "cipher"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Cipher suite used"
+
+  - field: "curve"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Elliptic curve used"
+
+  - field: "resumed"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether the session was resumed"
+
+  - field: "established"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether the handshake completed"
+
+  - field: "cert_chain_fuids"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Server certificate chain file UIDs"
+
+  - field: "client_cert_chain_fuids"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Client certificate chain file UIDs"
+
+  - field: "validation_status"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Certificate validation result"
+
+  - field: "ja3"
+    type: PASSTHROUGH
+    tier: 3
+    description: "JA3 TLS client fingerprint — analytical value"
+
+  - field: "ja3s"
+    type: PASSTHROUGH
+    tier: 3
+    description: "JA3S TLS server fingerprint — analytical value"
+
+  # ═══════════════════════════════════════════════════════════════
+  # x509.log — Certificate records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "certificate.subject"
+    type: FREETEXT
+    tier: 1
+    description: "Certificate subject — CN may contain employee names or internal hostnames"
+
+  - field: "certificate.issuer"
+    type: FREETEXT
+    tier: 1
+    description: "Certificate issuer — internal CA names reveal org structure"
+
+  - field: "san.dns"
+    type: HOSTNAME
+    tier: 1
+    description: "Subject Alternative Name DNS entries — internal hostnames"
+
+  - field: "san.email"
+    type: EMAIL
+    tier: 1
+    description: "Subject Alternative Name email entries"
+
+  - field: "id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Zeek file UID for the certificate"
+
+  - field: "certificate.version"
+    type: PASSTHROUGH
+    tier: 3
+    description: "X.509 certificate version"
+
+  - field: "certificate.serial"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Certificate serial number"
+
+  - field: "certificate.not_valid_before"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Certificate validity start date"
+
+  - field: "certificate.not_valid_after"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Certificate validity end date"
+
+  - field: "certificate.key_alg"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Public key algorithm"
+
+  - field: "certificate.sig_alg"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Signature algorithm"
+
+  - field: "certificate.key_type"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Public key type"
+
+  - field: "certificate.key_length"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Public key length in bits"
+
+  - field: "certificate.exponent"
+    type: PASSTHROUGH
+    tier: 3
+    description: "RSA public key exponent"
+
+  - field: "basic_constraints.ca"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether this is a CA certificate"
+
+  - field: "basic_constraints.path_len"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Maximum CA chain path length"
+
+  # ═══════════════════════════════════════════════════════════════
+  # ntlm.log — NTLM authentication records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "ntlm.username"
+    type: USERNAME
+    tier: 1
+    description: "Windows login username from NTLM negotiation"
+
+  - field: "ntlm.hostname"
+    type: HOSTNAME
+    tier: 1
+    description: "Client hostname from NTLM negotiation"
+
+  - field: "ntlm.domainname"
+    type: DOMAIN_INTERNAL
+    tier: 1
+    description: "Windows domain name from NTLM negotiation"
+
+  - field: "server_nb_computer_name"
+    type: HOSTNAME
+    tier: 1
+    description: "NetBIOS name of the NTLM server"
+
+  - field: "server_dns_computer_name"
+    type: HOSTNAME
+    tier: 1
+    description: "DNS name of the NTLM server"
+
+  - field: "server_tree_name"
+    type: DOMAIN_INTERNAL
+    tier: 1
+    description: "Active Directory tree/forest name"
+
+  - field: "success"
+    type: PASSTHROUGH
+    tier: 3
+    description: "NTLM authentication result"
+
+  - field: "status"
+    type: PASSTHROUGH
+    tier: 3
+    description: "NTLM status code"
+
+  # ═══════════════════════════════════════════════════════════════
+  # files.log — File analysis records
+  # ═══════════════════════════════════════════════════════════════
+
+  - field: "filename"
+    type: FILENAME
+    tier: 1
+    description: "Transferred filename — may reveal projects or people"
+
+  - field: "fuid"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Zeek file UID"
+
+  - field: "tx_hosts"
+    type: PASSTHROUGH
+    tier: 3
+    description: "File transmitter IP addresses"
+
+  - field: "rx_hosts"
+    type: PASSTHROUGH
+    tier: 3
+    description: "File receiver IP addresses"
+
+  - field: "conn_uids"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Connection UIDs associated with this file"
+
+  - field: "source"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Source of the file data (e.g., HTTP, SSL)"
+
+  - field: "depth"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Nesting depth of the file"
+
+  - field: "analyzers"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Analyzers that processed this file"
+
+  - field: "sha1"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SHA1 hash — analytical value"
+
+  - field: "sha256"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SHA256 hash — analytical value"
+
+  - field: "md5"
+    type: PASSTHROUGH
+    tier: 3
+    description: "MD5 hash — analytical value"
+
+  - field: "total_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Total file size"
+
+  - field: "missing_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes not captured"
+
+  - field: "overflow_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes beyond capture limit"
+
+  - field: "seen_bytes"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Bytes actually captured"
+
+  - field: "is_orig"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether the file was from the originator"
+
+  - field: "timedout"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether file analysis timed out"
+
+  - field: "extracted"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Local path of extracted file"
+
+  - field: "extracted_cutoff"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether extraction was cut off"
+
+  - field: "extracted_size"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Size of extracted file"
+
+  - field: "mime_type"
+    type: PASSTHROUGH
+    tier: 3
+    description: "MIME type of the file"

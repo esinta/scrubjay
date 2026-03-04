@@ -1,0 +1,177 @@
+profile:
+  name: "esinta"
+  version: "1.0"
+  description: "Esinta Endpoints process telemetry from Windows OT/critical infrastructure"
+  sourcetypes:
+    - "esinta:process_events"
+    - "esinta:detection_alerts"
+  indexes:
+    - "esinta"
+  author: "esinta"
+  url: "https://docs.esinta.com/api/"
+
+internal_domains:
+  - "*.corp.internal"
+  - "*.yourcompany.com"
+
+fields:
+  # ── Tier 1: Always scrub ──
+
+  - field: "username"
+    type: USERNAME
+    tier: 1
+    description: "Windows user context for the process"
+
+  - field: "hostname"
+    type: HOSTNAME
+    tier: 1
+    description: "Endpoint hostname from agents table (joined in API response)"
+
+  - field: "domain"
+    type: DOMAIN_INTERNAL
+    tier: 1
+    description: "Windows domain name (e.g., CORP, ACME)"
+
+  - field: "command_line"
+    type: FREETEXT
+    tier: 1
+    description: "Full command-line arguments — often contains usernames in file paths (C:\\Users\\jdoe\\...), internal server names in UNC paths (\\\\FILESERVER01\\share), and other sensitive values embedded in arbitrary text"
+
+  - field: "executable_path"
+    type: FILE_PATH
+    tier: 1
+    description: "Full path to executable — may contain username in Users directory"
+
+  - field: "exe_labels.updated_by"
+    type: USERNAME
+    tier: 1
+    description: "Username of analyst who labeled the executable"
+
+  # ── Tier 2: Scrub by default ──
+
+  - field: "mac_address"
+    type: MAC_ADDRESS
+    tier: 2
+    description: "Agent MAC address"
+
+  - field: "exe_labels.notes"
+    type: FREETEXT
+    tier: 2
+    description: "Analyst notes on executable — may reference users, hosts, or projects"
+
+  # ── Tier 3: Never scrub (passthrough) ──
+
+  - field: "event_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "UUID event identifier"
+
+  - field: "agent_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "UUID agent identifier"
+
+  - field: "timestamp"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Event timestamp"
+
+  - field: "event_type"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Event type (process_create, process_terminate)"
+
+  - field: "process_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Windows PID — not PII"
+
+  - field: "process_name"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Executable name (cmd.exe, powershell.exe) — not PII, analytical value"
+
+  - field: "parent_process_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Parent PID"
+
+  - field: "parent_name"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Parent executable name — not PII"
+
+  - field: "file_hash"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SHA256 hash — not PII, critical for threat hunting"
+
+  - field: "session_id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Windows session ID"
+
+  - field: "working_set_size"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Process memory — not PII"
+
+  - field: "virtual_size"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Virtual memory — not PII"
+
+  - field: "handle_count"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Handle count — not PII"
+
+  - field: "thread_count"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Thread count — not PII"
+
+  - field: "created_at"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Database insertion timestamp"
+
+  - field: "ip_address"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Agent IP address — passthrough by default, user can override to scrub"
+
+  - field: "os_type"
+    type: PASSTHROUGH
+    tier: 3
+    description: "OS type (Windows)"
+
+  - field: "os_version"
+    type: PASSTHROUGH
+    tier: 3
+    description: "OS version string"
+
+  - field: "os_architecture"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Architecture (x64, x86)"
+
+  - field: "agent_version"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Agent software version"
+
+  - field: "status"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Agent status"
+
+  - field: "exe_labels.label"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Executable label (benign, suspicious, malicious)"
+
+  - field: "exe_labels.file_hash"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SHA256 hash in exe catalog"

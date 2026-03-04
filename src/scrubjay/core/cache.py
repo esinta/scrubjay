@@ -105,6 +105,30 @@ class TokenCache:
             text = text.replace(token, entry.real_value)
         return text
 
+    def restore_text_reverse(self, text: str) -> str:
+        """Replace all known real values in text with their tokens.
+
+        Used for FREETEXT fields where sub-entities need to be tokenized
+        within the text. Uses longest-match-first to avoid partial replacement.
+
+        Args:
+            text: Text containing real values to tokenize.
+
+        Returns:
+            Text with all known real values replaced by tokens.
+        """
+        with self._lock:
+            sorted_reals = sorted(
+                self._real_to_token.keys(), key=len, reverse=True
+            )
+
+        for real in sorted_reals:
+            entry = self._real_to_token[real]
+            if entry.field_type.name in ("PASSTHROUGH", "FREETEXT"):
+                continue
+            text = text.replace(real, entry.token_value)
+        return text
+
     def stats(self) -> dict[str, int]:
         """Return scrubbing statistics: counts by field type.
 

@@ -1,0 +1,206 @@
+profile:
+  name: "proofpoint"
+  version: "1.0"
+  description: "Proofpoint TAP/SIEM message events and threat details"
+  sourcetypes:
+    - "proofpoint:tap:messages:delivered"
+    - "proofpoint:tap:messages:blocked"
+    - "proofpoint:siem:messages"
+  indexes:
+    - "proofpoint"
+    - "email"
+  author: "esinta"
+  url: "https://help.proofpoint.com/Threat_Insight_Dashboard/API_Documentation/SIEM_API"
+
+internal_domains:
+  - "*.corp.internal"
+  - "*.yourcompany.com"
+
+fields:
+  # ── Tier 1: Always scrub ──
+
+  - field: "sender"
+    type: EMAIL
+    tier: 1
+    description: "Envelope sender email address"
+
+  - field: "recipient"
+    type: EMAIL
+    tier: 1
+    description: "Envelope recipient email address(es)"
+
+  - field: "headerFrom"
+    type: EMAIL
+    tier: 1
+    description: "From header email address"
+
+  - field: "headerReplyTo"
+    type: EMAIL
+    tier: 1
+    description: "Reply-To header email address"
+
+  - field: "subject"
+    type: EMAIL_SUBJECT
+    tier: 1
+    description: "Email subject line — may contain sensitive project/people names"
+
+  - field: "fromAddress"
+    type: EMAIL
+    tier: 1
+    description: "Parsed sender address"
+
+  - field: "toAddresses"
+    type: EMAIL
+    tier: 1
+    description: "Array of recipient addresses"
+
+  - field: "ccAddresses"
+    type: EMAIL
+    tier: 1
+    description: "Array of CC addresses"
+
+  # ── Tier 2: Scrub by default ──
+
+  - field: "cluster"
+    type: APP_NAME
+    tier: 2
+    description: "Proofpoint cluster name — reveals infrastructure"
+
+  - field: "policyRoutes"
+    type: FREETEXT
+    tier: 2
+    description: "Policy route names — may reveal org structure"
+
+  # ── Tier 3: Never scrub ──
+
+  - field: "senderIP"
+    type: PASSTHROUGH
+    tier: 3
+    description: "External sender IP — threat intelligence value"
+
+  - field: "messageID"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Message-ID header — useful for correlation"
+
+  - field: "spamScore"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Spam detection score"
+
+  - field: "phishScore"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Phishing detection score"
+
+  - field: "impostorScore"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Impostor/BEC detection score"
+
+  - field: "malwareScore"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Malware detection score"
+
+  - field: "completelyRewritten"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Whether URLs were completely rewritten"
+
+  - field: "quarantineFolder"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Quarantine folder name"
+
+  - field: "quarantineRule"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Quarantine rule that triggered"
+
+  - field: "QID"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Proofpoint queue ID"
+
+  - field: "GUID"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Proofpoint message GUID"
+
+  - field: "messageTime"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Message timestamp"
+
+  - field: "messageSize"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Message size in bytes"
+
+  - field: "modulesRun"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Detection modules that processed this message"
+
+  # Threat detail sub-objects
+  - field: "threatsInfoMap[*].threat"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat indicator (URL, hash, etc.)"
+
+  - field: "threatsInfoMap[*].threatID"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat identifier"
+
+  - field: "threatsInfoMap[*].threatStatus"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat status (active, cleared, etc.)"
+
+  - field: "threatsInfoMap[*].threatType"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat type (url, attachment, messageText)"
+
+  - field: "threatsInfoMap[*].threatUrl"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Proofpoint threat detail URL"
+
+  - field: "threatsInfoMap[*].classification"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat classification (malware, phish, spam)"
+
+  - field: "threatsInfoMap[*].campaignID"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Threat campaign identifier"
+
+  # Message parts sub-objects
+  - field: "messageParts[*].filename"
+    type: FILENAME
+    tier: 1
+    description: "Attachment filename — may reveal projects or people"
+
+  - field: "messageParts[*].disposition"
+    type: PASSTHROUGH
+    tier: 3
+    description: "MIME disposition (inline, attachment)"
+
+  - field: "messageParts[*].md5"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Attachment MD5 hash"
+
+  - field: "messageParts[*].sha256"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Attachment SHA256 hash"
+
+  - field: "messageParts[*].contentType"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Attachment MIME content type"

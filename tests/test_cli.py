@@ -96,6 +96,68 @@ class TestAuditCommand:
         assert "PERSON_NAME" in result.output or "Field" in result.output
 
 
+class TestBatchMode:
+    def test_scrub_directory(self):
+        runner = CliRunner()
+        with runner.isolated_filesystem():
+            # Create test directory with JSON files
+            os.makedirs("input")
+            for i in range(3):
+                with open(f"input/event_{i}.json", "w") as f:
+                    json.dump(
+                        {"username": f"user{i}", "hostname": f"HOST{i}",
+                         "event_id": f"evt-{i}", "process_name": "cmd.exe"},
+                        f,
+                    )
+
+            result = runner.invoke(
+                cli,
+                ["scrub", "-p", "esinta", "-d", "input"],
+            )
+            assert result.exit_code == 0
+            assert os.path.isdir("input/scrubbed")
+            for i in range(3):
+                out_file = f"input/scrubbed/event_{i}.json"
+                assert os.path.exists(out_file)
+                with open(out_file) as f:
+                    data = json.load(f)
+                assert data["username"].startswith("USER-")
+
+    def test_scrub_directory_not_found(self):
+        runner = CliRunner()
+        result = runner.invoke(
+            cli, ["scrub", "-p", "esinta", "-d", "/nonexistent/path"]
+        )
+        assert result.exit_code != 0
+
+    def test_scrub_directory_entity_linking(self):
+        """Same username across files should get the same token."""
+        runner = CliRunner()
+        with runner.isolated_filesystem():
+            os.makedirs("input")
+            for i in range(2):
+                with open(f"input/event_{i}.json", "w") as f:
+                    json.dump(
+                        {"username": "shared_user", "hostname": f"HOST{i}",
+                         "event_id": f"evt-{i}", "process_name": "cmd.exe"},
+                        f,
+                    )
+
+            result = runner.invoke(
+                cli, ["scrub", "-p", "esinta", "-d", "input"]
+            )
+            assert result.exit_code == 0
+
+            tokens = []
+            for i in range(2):
+                with open(f"input/scrubbed/event_{i}.json") as f:
+                    data = json.load(f)
+                tokens.append(data["username"])
+
+            # Same real value → same token
+            assert tokens[0] == tokens[1]
+
+
 class TestRestoreCommand:
     def test_scrub_then_restore(self):
         if not os.path.exists(OKTA_FIXTURE):

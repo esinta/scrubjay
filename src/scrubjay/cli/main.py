@@ -78,6 +78,17 @@ def cli() -> None:
     """ScrubJay: Sanitize sensitive data in security logs."""
 
 
+def _parse_input(raw: str, fmt: str | None) -> str | dict | list:
+    """Parse raw input string based on format hint."""
+    if fmt == "csv" or (
+        fmt is None and not raw.lstrip().startswith(("{", "["))
+    ):
+        if raw.lstrip().startswith(("{", "[")):
+            return json.loads(raw)
+        return raw
+    return json.loads(raw)
+
+
 @cli.command()
 @click.option("-p", "--profile", "profile_names", required=True,
               help="Profile name(s), comma-separated")
@@ -89,29 +100,27 @@ def cli() -> None:
               help="Input file path")
 @click.option("-o", "--output", "output_path", default=None,
               help="Output file path")
+@click.option("-d", "--directory", "dir_path", default=None,
+              help="Process all JSON files in directory")
 def scrub(
     profile_names: str,
     fmt: str | None,
     tier: int,
     file_path: str | None,
     output_path: str | None,
+    dir_path: str | None,
 ) -> None:
     """Sanitize sensitive data in security logs."""
     profiles = [p.strip() for p in profile_names.split(",")]
     tier_enum = Tier.ALWAYS if tier == 1 else Tier.DEFAULT
 
+    if dir_path:
+        _scrub_directory(profiles, tier_enum, fmt, dir_path)
+        return
+
     raw = _read_input(file_path)
     session = SanitizeSession(profiles=profiles, tier=tier_enum)
-
-    # Parse input
-    if fmt == "csv" or (fmt is None and not raw.lstrip().startswith(("{", "["))):
-        # Treat as CSV if explicitly CSV or doesn't look like JSON
-        if raw.lstrip().startswith(("{", "[")):
-            data = json.loads(raw)
-        else:
-            data = raw
-    else:
-        data = json.loads(raw)
+    data = _parse_input(raw, fmt)
 
     result = session.sanitize(data)
     output = json.dumps(result.sanitized_data, indent=2)
@@ -122,6 +131,54 @@ def scrub(
     cache_path = _save_session_cache(session, session_id)
     click.echo(f"Session saved: {session_id} ({cache_path})", err=True)
     click.echo(f"Stats: {json.dumps(result.stats)}", err=True)
+
+
+def _scrub_directory(
+    profiles: list[str],
+    tier: Tier,
+    fmt: str | None,
+    dir_path: str,
+) -> None:
+    """Process all JSON files in a directory with a shared session."""
+    if not os.path.isdir(dir_path):
+        raise click.ClickException(f"Not a directory: {dir_path}")
+
+    json_files = sorted(
+        f for f in os.listdir(dir_path) if f.endswith(".json")
+    )
+    if not json_files:
+        raise click.ClickException(f"No JSON files in {dir_path}")
+
+    out_dir = os.path.join(dir_path, "scrubbed")
+    os.makedirs(out_dir, exist_ok=True)
+
+    session = SanitizeSession(profiles=profiles, tier=tier)
+    total_stats: dict[str, int] = {}
+
+    for fname in json_files:
+        fpath = os.path.join(dir_path, fname)
+        with open(fpath) as f:
+            raw = f.read()
+
+        data = _parse_input(raw, fmt)
+        result = session.sanitize(data)
+
+        out_path = os.path.join(out_dir, fname)
+        with open(out_path, "w") as f:
+            json.dump(result.sanitized_data, f, indent=2)
+
+        for k, v in result.stats.items():
+            total_stats[k] = total_stats.get(k, 0) + v
+
+        click.echo(f"  {fname} -> scrubbed/{fname}", err=True)
+
+    session_id = str(int(time.time()))
+    cache_path = _save_session_cache(session, session_id)
+    click.echo(
+        f"Processed {len(json_files)} files -> {out_dir}", err=True
+    )
+    click.echo(f"Session saved: {session_id} ({cache_path})", err=True)
+    click.echo(f"Stats: {json.dumps(total_stats)}", err=True)
 
 
 @cli.command()
