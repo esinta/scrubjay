@@ -1,0 +1,1 @@
+"""LLM tool hooks (future)."""

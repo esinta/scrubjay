@@ -1,0 +1,125 @@
+profile:
+  name: "okta"
+  version: "1.0"
+  description: "Okta identity and SSO event logs"
+  sourcetypes:
+    - "OktaIM2:log"
+    - "okta:log"
+  indexes:
+    - "okta"
+  author: "esinta"
+  url: "https://developer.okta.com/docs/reference/api/system-log/"
+
+internal_domains:
+  - "*.corp.internal"
+  - "*.yourcompany.com"
+
+fields:
+  # ── Tier 1: Always scrub ──
+
+  - field: "actor.displayName"
+    type: PERSON_NAME
+    tier: 1
+    description: "Full name of the user who performed the action"
+
+  - field: "actor.alternateId"
+    type: EMAIL
+    tier: 1
+    description: "Okta login (typically email address)"
+
+  - field: "target[*].displayName"
+    type: PERSON_NAME
+    tier: 1
+    description: "Display name of the target user/resource. Array field."
+
+  - field: "target[*].alternateId"
+    type: EMAIL
+    tier: 1
+    description: "Target user login (typically email). Array field."
+
+  - field: "actor.id"
+    type: ACCOUNT_ID
+    tier: 1
+    description: "Okta user ID (e.g., 00u1abc2def3ghi4jkl)"
+
+  - field: "target[*].id"
+    type: ACCOUNT_ID
+    tier: 1
+    description: "Target resource Okta ID"
+
+  - field: "debugContext.debugData.requestUri"
+    type: URL_INTERNAL
+    tier: 1
+    description: "Internal request URI, may contain tokens or session IDs"
+
+  - field: "debugContext.debugData.dtHash"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Device trust hash — not PII"
+
+  # ── Tier 2: Scrub by default, analyst can override ──
+
+  - field: "target[*].displayName"
+    type: APP_NAME
+    tier: 2
+    match_condition:
+      field: "target[*].type"
+      equals: "AppInstance"
+    description: "SSO application name — reveals tool stack"
+
+  - field: "outcome.reason"
+    type: FREETEXT
+    tier: 2
+    description: "Failure reason — may contain usernames or app names in text"
+
+  - field: "debugContext.debugData.*"
+    type: FREETEXT
+    tier: 2
+    description: "Debug context catch-all — Okta dumps various sensitive data here"
+
+  # ── Tier 3: Never scrub ──
+
+  - field: "client.ipAddress"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Source IP — analyst decided external/internal IPs are safe"
+
+  - field: "client.geographicalContext.*"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Geo data — city, state, country"
+
+  - field: "eventType"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Okta event type (e.g., user.session.start)"
+
+  - field: "outcome.result"
+    type: PASSTHROUGH
+    tier: 3
+    description: "SUCCESS, FAILURE, SKIPPED, etc."
+
+  - field: "published"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Event timestamp"
+
+  - field: "severity"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Event severity level"
+
+  - field: "authenticationContext.authenticationStep"
+    type: PASSTHROUGH
+    tier: 3
+    description: "MFA step number — not sensitive"
+
+  - field: "securityContext.asOrg"
+    type: PASSTHROUGH
+    tier: 3
+    description: "AS organization — external network info"
+
+  - field: "transaction.id"
+    type: PASSTHROUGH
+    tier: 3
+    description: "Transaction correlation ID — useful for analysis, not PII"

@@ -1,0 +1,1509 @@
+[
+    {
+        "actor": {
+            "id": "00u3f7a1b2c3d4e5f6g7",
+            "type": "User",
+            "alternateId": "elena.martinez@syntheticorp.com",
+            "displayName": "Elena Martinez"
+        },
+        "client": {
+            "ipAddress": "198.51.100.14",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Portland",
+                "state": "Oregon",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxR1a2B3c4D5e6F7g8H"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3f7a1b2c3d4e5f6g7",
+                "type": "User",
+                "alternateId": "elena.martinez@syntheticorp.com",
+                "displayName": "Elena Martinez"
+            }
+        ],
+        "transaction": {
+            "id": "WaB1cD2eF3gH4iJ5k",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "ab12cd34ef56gh78ij90kl12mn34op56qr78st90",
+                "authnRequestId": "req_a1b2c3d4e5f6",
+                "requestId": "Yv1a2B3c4D5e6F7g8H",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=false"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T08:12:33.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d4e5"
+    },
+    {
+        "actor": {
+            "id": "00u3f7a1b2c3d4e5f6g7",
+            "type": "User",
+            "alternateId": "elena.martinez@syntheticorp.com",
+            "displayName": "Elena Martinez"
+        },
+        "client": {
+            "ipAddress": "198.51.100.14",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Portland",
+                "state": "Oregon",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxR1a2B3c4D5e6F7g8H"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3f7a1b2c3d4e5f6g7",
+                "type": "User",
+                "alternateId": "elena.martinez@syntheticorp.com",
+                "displayName": "Elena Martinez"
+            }
+        ],
+        "transaction": {
+            "id": "WaB1cD2eF3gH4iJ5k",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/ostf1a2b3c4d5e/verify",
+                "dtHash": "ab12cd34ef56gh78ij90kl12mn34op56qr78st90",
+                "factor": "OKTA_VERIFY_PUSH",
+                "requestId": "Yv1a2B3c4D5e6F7g8I",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T08:12:47.000Z",
+        "severity": "INFO",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    {
+        "actor": {
+            "id": "00u8h9i0j1k2l3m4n5o6",
+            "type": "User",
+            "alternateId": "david.chen@syntheticorp.com",
+            "displayName": "David Chen"
+        },
+        "client": {
+            "ipAddress": "203.0.113.42",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Windows 10",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxS2b3C4d5E6f7G8h9I"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "FAILURE",
+            "reason": "INVALID_CREDENTIALS"
+        },
+        "target": [
+            {
+                "id": "00u8h9i0j1k2l3m4n5o6",
+                "type": "User",
+                "alternateId": "david.chen@syntheticorp.com",
+                "displayName": "David Chen"
+            }
+        ],
+        "transaction": {
+            "id": "XbC2dE3fG4hI5jK6l",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "cd34ef56gh78ij90kl12mn34op56qr78st90uv12",
+                "authnRequestId": "req_b2c3d4e5f6g7",
+                "requestId": "Zw2b3C4d5E6f7G8h9I",
+                "threatSuspected": "false",
+                "loginResult": "INVALID_CREDENTIALS"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T08:25:11.000Z",
+        "severity": "WARN",
+        "displayMessage": "User login to Okta",
+        "uuid": "b2c3d4e5-f6a7-8901-bcde-f23456789012"
+    },
+    {
+        "actor": {
+            "id": "00u8h9i0j1k2l3m4n5o6",
+            "type": "User",
+            "alternateId": "david.chen@syntheticorp.com",
+            "displayName": "David Chen"
+        },
+        "client": {
+            "ipAddress": "203.0.113.42",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Windows 10",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxS2b3C4d5E6f7G8h9J"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u8h9i0j1k2l3m4n5o6",
+                "type": "User",
+                "alternateId": "david.chen@syntheticorp.com",
+                "displayName": "David Chen"
+            }
+        ],
+        "transaction": {
+            "id": "XbC2dE3fG4hI5jK6m",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "cd34ef56gh78ij90kl12mn34op56qr78st90uv12",
+                "authnRequestId": "req_c3d4e5f6g7h8",
+                "requestId": "Zw2b3C4d5E6f7G8h9J",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=true"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T08:26:03.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "c3d4e5f6-a7b8-9012-cdef-345678901234"
+    },
+    {
+        "actor": {
+            "id": "00u8h9i0j1k2l3m4n5o6",
+            "type": "User",
+            "alternateId": "david.chen@syntheticorp.com",
+            "displayName": "David Chen"
+        },
+        "client": {
+            "ipAddress": "203.0.113.42",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Windows 10",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxS2b3C4d5E6f7G8h9J"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u8h9i0j1k2l3m4n5o6",
+                "type": "User",
+                "alternateId": "david.chen@syntheticorp.com",
+                "displayName": "David Chen"
+            }
+        ],
+        "transaction": {
+            "id": "XbC2dE3fG4hI5jK6m",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/sms1a2b3c4d5e/verify",
+                "dtHash": "cd34ef56gh78ij90kl12mn34op56qr78st90uv12",
+                "factor": "SMS",
+                "requestId": "Zw2b3C4d5E6f7G8h9K",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T08:26:18.000Z",
+        "severity": "INFO",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "d4e5f6a7-b8c9-0123-def0-456789012345"
+    },
+    {
+        "actor": {
+            "id": "00u5p6q7r8s9t0u1v2w3",
+            "type": "User",
+            "alternateId": "sarah.johnson@syntheticorp.com",
+            "displayName": "Sarah Johnson"
+        },
+        "client": {
+            "ipAddress": "192.0.2.88",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15",
+                "os": "Mac OS X",
+                "browser": "SAFARI"
+            },
+            "geographicalContext": {
+                "city": "Austin",
+                "state": "Texas",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxT3c4D5e6F7g8H9i0J"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u5p6q7r8s9t0u1v2w3",
+                "type": "User",
+                "alternateId": "sarah.johnson@syntheticorp.com",
+                "displayName": "Sarah Johnson"
+            }
+        ],
+        "transaction": {
+            "id": "YcD3eF4gH5iJ6kL7m",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "ef56gh78ij90kl12mn34op56qr78st90uv12wx34",
+                "authnRequestId": "req_d4e5f6g7h8i9",
+                "requestId": "Ax3c4D5e6F7g8H9i0J",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=false"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T08:45:22.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "e5f6a7b8-c9d0-1234-ef01-567890123456"
+    },
+    {
+        "actor": {
+            "id": "00u0x1y2z3a4b5c6d7e8",
+            "type": "User",
+            "alternateId": "admin@syntheticorp.com",
+            "displayName": "Okta Admin"
+        },
+        "client": {
+            "ipAddress": "198.51.100.200",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Denver",
+                "state": "Colorado",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxU4d5E6f7G8h9I0j1K"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "0oa1a2b3c4d5e6f7g8h9",
+                "type": "AppInstance",
+                "alternateId": "Syntheticorp Salesforce",
+                "displayName": "Syntheticorp Salesforce"
+            },
+            {
+                "id": "00u2k3l4m5n6o7p8q9r0",
+                "type": "User",
+                "alternateId": "marcus.williams@syntheticorp.com",
+                "displayName": "Marcus Williams"
+            }
+        ],
+        "transaction": {
+            "id": "ZdE4fG5hI6jK7lM8n",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/apps/0oa1a2b3c4d5e6f7g8h9/users",
+                "requestId": "By4d5E6f7G8h9I0j1K",
+                "threatSuspected": "false",
+                "changedAttributes": "profile"
+            }
+        },
+        "eventType": "app.user_membership.add",
+        "published": "2024-03-15T09:02:45.000Z",
+        "severity": "INFO",
+        "displayMessage": "Add user to application membership",
+        "uuid": "f6a7b8c9-d0e1-2345-f012-678901234567"
+    },
+    {
+        "actor": {
+            "id": "00u0x1y2z3a4b5c6d7e8",
+            "type": "User",
+            "alternateId": "admin@syntheticorp.com",
+            "displayName": "Okta Admin"
+        },
+        "client": {
+            "ipAddress": "198.51.100.200",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Denver",
+                "state": "Colorado",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxU4d5E6f7G8h9I0j1K"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "0oa9i8h7g6f5e4d3c2b1",
+                "type": "AppInstance",
+                "alternateId": "Syntheticorp Jira Cloud",
+                "displayName": "Syntheticorp Jira Cloud"
+            },
+            {
+                "id": "00u7r8s9t0u1v2w3x4y5",
+                "type": "User",
+                "alternateId": "priya.patel@syntheticorp.com",
+                "displayName": "Priya Patel"
+            }
+        ],
+        "transaction": {
+            "id": "ZdE4fG5hI6jK7lM8o",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/apps/0oa9i8h7g6f5e4d3c2b1/users",
+                "requestId": "By4d5E6f7G8h9I0j1L",
+                "threatSuspected": "false",
+                "changedAttributes": "profile"
+            }
+        },
+        "eventType": "app.user_membership.add",
+        "published": "2024-03-15T09:03:12.000Z",
+        "severity": "INFO",
+        "displayMessage": "Add user to application membership",
+        "uuid": "a7b8c9d0-e1f2-3456-0123-789012345678"
+    },
+    {
+        "actor": {
+            "id": "00u2k3l4m5n6o7p8q9r0",
+            "type": "User",
+            "alternateId": "marcus.williams@syntheticorp.com",
+            "displayName": "Marcus Williams"
+        },
+        "client": {
+            "ipAddress": "203.0.113.99",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Linux",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Chicago",
+                "state": "Illinois",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxV5e6F7g8H9i0J1k2L"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u2k3l4m5n6o7p8q9r0",
+                "type": "User",
+                "alternateId": "marcus.williams@syntheticorp.com",
+                "displayName": "Marcus Williams"
+            }
+        ],
+        "transaction": {
+            "id": "AeF5gH6iJ7kL8mN9o",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "gh78ij90kl12mn34op56qr78st90uv12wx34yz56",
+                "authnRequestId": "req_e5f6g7h8i9j0",
+                "requestId": "Cz5e6F7g8H9i0J1k2L",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=false"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T09:15:08.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "b8c9d0e1-f2a3-4567-1234-890123456789"
+    },
+    {
+        "actor": {
+            "id": "00u2k3l4m5n6o7p8q9r0",
+            "type": "User",
+            "alternateId": "marcus.williams@syntheticorp.com",
+            "displayName": "Marcus Williams"
+        },
+        "client": {
+            "ipAddress": "203.0.113.99",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Linux",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Chicago",
+                "state": "Illinois",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxV5e6F7g8H9i0J1k2L"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "FAILURE",
+            "reason": "INVALID_PASSCODE"
+        },
+        "target": [
+            {
+                "id": "00u2k3l4m5n6o7p8q9r0",
+                "type": "User",
+                "alternateId": "marcus.williams@syntheticorp.com",
+                "displayName": "Marcus Williams"
+            }
+        ],
+        "transaction": {
+            "id": "AeF5gH6iJ7kL8mN9o",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/ostf2b3c4d5e6f/verify",
+                "dtHash": "gh78ij90kl12mn34op56qr78st90uv12wx34yz56",
+                "factor": "GOOGLE_AUTH",
+                "requestId": "Cz5e6F7g8H9i0J1k2M",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T09:15:34.000Z",
+        "severity": "WARN",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "c9d0e1f2-a3b4-5678-2345-901234567890"
+    },
+    {
+        "actor": {
+            "id": "00u7r8s9t0u1v2w3x4y5",
+            "type": "User",
+            "alternateId": "priya.patel@syntheticorp.com",
+            "displayName": "Priya Patel"
+        },
+        "client": {
+            "ipAddress": "198.51.100.77",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
+                "os": "Windows 10",
+                "browser": "FIREFOX"
+            },
+            "geographicalContext": {
+                "city": "San Francisco",
+                "state": "California",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxW6f7G8h9I0j1K2l3M"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u7r8s9t0u1v2w3x4y5",
+                "type": "User",
+                "alternateId": "priya.patel@syntheticorp.com",
+                "displayName": "Priya Patel"
+            }
+        ],
+        "transaction": {
+            "id": "BfG6hI7jK8lM9nO0p",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "ij90kl12mn34op56qr78st90uv12wx34yz56ab78",
+                "authnRequestId": "req_f6g7h8i9j0k1",
+                "requestId": "Da6f7G8h9I0j1K2l3M",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=true"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T09:30:55.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "d0e1f2a3-b4c5-6789-3456-012345678901"
+    },
+    {
+        "actor": {
+            "id": "00u7r8s9t0u1v2w3x4y5",
+            "type": "User",
+            "alternateId": "priya.patel@syntheticorp.com",
+            "displayName": "Priya Patel"
+        },
+        "client": {
+            "ipAddress": "198.51.100.77",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
+                "os": "Windows 10",
+                "browser": "FIREFOX"
+            },
+            "geographicalContext": {
+                "city": "San Francisco",
+                "state": "California",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxW6f7G8h9I0j1K2l3M"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u7r8s9t0u1v2w3x4y5",
+                "type": "User",
+                "alternateId": "priya.patel@syntheticorp.com",
+                "displayName": "Priya Patel"
+            }
+        ],
+        "transaction": {
+            "id": "BfG6hI7jK8lM9nO0p",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/ostf3c4d5e6f7g/verify",
+                "dtHash": "ij90kl12mn34op56qr78st90uv12wx34yz56ab78",
+                "factor": "FIDO_WEBAUTHN",
+                "requestId": "Da6f7G8h9I0j1K2l3N",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T09:31:02.000Z",
+        "severity": "INFO",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "e1f2a3b4-c5d6-7890-4567-123456789012"
+    },
+    {
+        "actor": {
+            "id": "00u4z5a6b7c8d9e0f1g2",
+            "type": "User",
+            "alternateId": "james.okonkwo@syntheticorp.com",
+            "displayName": "James Okonkwo"
+        },
+        "client": {
+            "ipAddress": "192.0.2.150",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "New York",
+                "state": "New York",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxX7g8H9i0J1k2L3m4N"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u4z5a6b7c8d9e0f1g2",
+                "type": "User",
+                "alternateId": "james.okonkwo@syntheticorp.com",
+                "displayName": "James Okonkwo"
+            }
+        ],
+        "transaction": {
+            "id": "CgH7iJ8kL9mN0oP1q",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "kl12mn34op56qr78st90uv12wx34yz56ab78cd90",
+                "authnRequestId": "req_g7h8i9j0k1l2",
+                "requestId": "Eb7g8H9i0J1k2L3m4N",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=false"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T09:42:17.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "f2a3b4c5-d6e7-8901-5678-234567890123"
+    },
+    {
+        "actor": {
+            "id": "00u6s7t8u9v0w1x2y3z4",
+            "type": "User",
+            "alternateId": "lisa.nakamura@syntheticorp.com",
+            "displayName": "Lisa Nakamura"
+        },
+        "client": {
+            "ipAddress": "203.0.113.201",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0",
+                "os": "Windows 10",
+                "browser": "EDGE"
+            },
+            "geographicalContext": {
+                "city": "Boston",
+                "state": "Massachusetts",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxY8h9I0j1K2l3M4n5O"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "FAILURE",
+            "reason": "LOCKED_OUT"
+        },
+        "target": [
+            {
+                "id": "00u6s7t8u9v0w1x2y3z4",
+                "type": "User",
+                "alternateId": "lisa.nakamura@syntheticorp.com",
+                "displayName": "Lisa Nakamura"
+            }
+        ],
+        "transaction": {
+            "id": "DhI8jK9lM0nO1pQ2r",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "mn34op56qr78st90uv12wx34yz56ab78cd90ef12",
+                "authnRequestId": "req_h8i9j0k1l2m3",
+                "requestId": "Fc8h9I0j1K2l3M4n5O",
+                "threatSuspected": "false",
+                "loginResult": "LOCKED_OUT"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T09:55:40.000Z",
+        "severity": "WARN",
+        "displayMessage": "User login to Okta",
+        "uuid": "a3b4c5d6-e7f8-9012-6789-345678901234"
+    },
+    {
+        "actor": {
+            "id": "00u9a0b1c2d3e4f5g6h7",
+            "type": "User",
+            "alternateId": "system@okta.com",
+            "displayName": "Okta System"
+        },
+        "client": {
+            "ipAddress": "198.51.100.14",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Portland",
+                "state": "Oregon",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxR1a2B3c4D5e6F7g8H"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3f7a1b2c3d4e5f6g7",
+                "type": "User",
+                "alternateId": "elena.martinez@syntheticorp.com",
+                "displayName": "Elena Martinez"
+            }
+        ],
+        "transaction": {
+            "id": "EiJ9kL0mN1oP2qR3s",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/login/signout",
+                "requestId": "Gd9i0J1k2L3m4N5o6P",
+                "dtHash": "op56qr78st90uv12wx34yz56ab78cd90ef12gh34",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "policy.evaluate_sign_on",
+        "published": "2024-03-15T10:05:33.000Z",
+        "severity": "INFO",
+        "displayMessage": "Evaluation of sign-on policy",
+        "uuid": "b4c5d6e7-f8a9-0123-7890-456789012345"
+    },
+    {
+        "actor": {
+            "id": "00u3f7a1b2c3d4e5f6g7",
+            "type": "User",
+            "alternateId": "elena.martinez@syntheticorp.com",
+            "displayName": "Elena Martinez"
+        },
+        "client": {
+            "ipAddress": "198.51.100.14",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Portland",
+                "state": "Oregon",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxR1a2B3c4D5e6F7g8H"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3f7a1b2c3d4e5f6g7",
+                "type": "User",
+                "alternateId": "elena.martinez@syntheticorp.com",
+                "displayName": "Elena Martinez"
+            }
+        ],
+        "transaction": {
+            "id": "FjK0lM1nO2pQ3rS4t",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/login/signout",
+                "requestId": "He0j1K2l3M4n5O6p7Q",
+                "dtHash": "op56qr78st90uv12wx34yz56ab78cd90ef12gh34",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.session.end",
+        "published": "2024-03-15T10:10:05.000Z",
+        "severity": "INFO",
+        "displayMessage": "User logout from Okta",
+        "uuid": "c5d6e7f8-a9b0-1234-8901-567890123456"
+    },
+    {
+        "actor": {
+            "id": "00u1h2i3j4k5l6m7n8o9",
+            "type": "User",
+            "alternateId": "rachel.thompson@syntheticorp.com",
+            "displayName": "Rachel Thompson"
+        },
+        "client": {
+            "ipAddress": "192.0.2.33",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+                "os": "iOS",
+                "browser": "SAFARI"
+            },
+            "geographicalContext": {
+                "city": "Miami",
+                "state": "Florida",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxZ9i0J1k2L3m4N5o6P"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u1h2i3j4k5l6m7n8o9",
+                "type": "User",
+                "alternateId": "rachel.thompson@syntheticorp.com",
+                "displayName": "Rachel Thompson"
+            }
+        ],
+        "transaction": {
+            "id": "GkL1mN2oP3qR4sT5u",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "qr78st90uv12wx34yz56ab78cd90ef12gh34ij56",
+                "authnRequestId": "req_i9j0k1l2m3n4",
+                "requestId": "If1k2L3m4N5o6P7q8R",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=false"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T10:18:29.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "d6e7f8a9-b0c1-2345-9012-678901234567"
+    },
+    {
+        "actor": {
+            "id": "00u1h2i3j4k5l6m7n8o9",
+            "type": "User",
+            "alternateId": "rachel.thompson@syntheticorp.com",
+            "displayName": "Rachel Thompson"
+        },
+        "client": {
+            "ipAddress": "192.0.2.33",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+                "os": "iOS",
+                "browser": "SAFARI"
+            },
+            "geographicalContext": {
+                "city": "Miami",
+                "state": "Florida",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxZ9i0J1k2L3m4N5o6P"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u1h2i3j4k5l6m7n8o9",
+                "type": "User",
+                "alternateId": "rachel.thompson@syntheticorp.com",
+                "displayName": "Rachel Thompson"
+            }
+        ],
+        "transaction": {
+            "id": "GkL1mN2oP3qR4sT5u",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/ostf4d5e6f7g8h/verify",
+                "dtHash": "qr78st90uv12wx34yz56ab78cd90ef12gh34ij56",
+                "factor": "OKTA_VERIFY_PUSH",
+                "requestId": "If1k2L3m4N5o6P7q8S",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T10:18:45.000Z",
+        "severity": "INFO",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "e7f8a9b0-c1d2-3456-0123-789012345678"
+    },
+    {
+        "actor": {
+            "id": "00u0x1y2z3a4b5c6d7e8",
+            "type": "User",
+            "alternateId": "admin@syntheticorp.com",
+            "displayName": "Okta Admin"
+        },
+        "client": {
+            "ipAddress": "198.51.100.200",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Denver",
+                "state": "Colorado",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxU4d5E6f7G8h9I0j1K"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "0oa2b3c4d5e6f7g8h9i0",
+                "type": "AppInstance",
+                "alternateId": "Syntheticorp Slack Enterprise",
+                "displayName": "Syntheticorp Slack Enterprise"
+            },
+            {
+                "id": "00u4z5a6b7c8d9e0f1g2",
+                "type": "User",
+                "alternateId": "james.okonkwo@syntheticorp.com",
+                "displayName": "James Okonkwo"
+            }
+        ],
+        "transaction": {
+            "id": "HlM2nO3pQ4rS5tU6v",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/apps/0oa2b3c4d5e6f7g8h9i0/users",
+                "requestId": "Jg2l3M4n5O6p7Q8r9S",
+                "threatSuspected": "false",
+                "changedAttributes": "profile"
+            }
+        },
+        "eventType": "app.user_membership.add",
+        "published": "2024-03-15T10:30:11.000Z",
+        "severity": "INFO",
+        "displayMessage": "Add user to application membership",
+        "uuid": "f8a9b0c1-d2e3-4567-1234-890123456789"
+    },
+    {
+        "actor": {
+            "id": "00u9a0b1c2d3e4f5g6h7",
+            "type": "User",
+            "alternateId": "system@okta.com",
+            "displayName": "Okta System"
+        },
+        "client": {
+            "ipAddress": "203.0.113.42",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Windows 10",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxS2b3C4d5E6f7G8h9J"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "SKIPPED",
+            "reason": "POLICY_NOT_APPLICABLE"
+        },
+        "target": [
+            {
+                "id": "00u8h9i0j1k2l3m4n5o6",
+                "type": "User",
+                "alternateId": "david.chen@syntheticorp.com",
+                "displayName": "David Chen"
+            }
+        ],
+        "transaction": {
+            "id": "ImN3oP4qR5sT6uV7w",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/sessions/me/lifecycle/refresh",
+                "requestId": "Kh3m4N5o6P7q8R9s0T",
+                "policyType": "OKTA_SIGN_ON",
+                "dtHash": "st90uv12wx34yz56ab78cd90ef12gh34ij56kl78",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "policy.evaluate_sign_on",
+        "published": "2024-03-15T10:42:08.000Z",
+        "severity": "INFO",
+        "displayMessage": "Evaluation of sign-on policy",
+        "uuid": "a9b0c1d2-e3f4-5678-2345-901234567890"
+    },
+    {
+        "actor": {
+            "id": "00u8h9i0j1k2l3m4n5o6",
+            "type": "User",
+            "alternateId": "david.chen@syntheticorp.com",
+            "displayName": "David Chen"
+        },
+        "client": {
+            "ipAddress": "203.0.113.42",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Windows 10",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxS2b3C4d5E6f7G8h9J"
+        },
+        "securityContext": {
+            "asOrg": "Cloudway Networks LLC",
+            "asNumber": 16509,
+            "isp": "Cloudway Networks"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u8h9i0j1k2l3m4n5o6",
+                "type": "User",
+                "alternateId": "david.chen@syntheticorp.com",
+                "displayName": "David Chen"
+            }
+        ],
+        "transaction": {
+            "id": "JnO4pQ5rS6tU7vW8x",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/login/signout",
+                "requestId": "Li4n5O6p7Q8r9S0t1U",
+                "dtHash": "st90uv12wx34yz56ab78cd90ef12gh34ij56kl78",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.session.end",
+        "published": "2024-03-15T10:55:30.000Z",
+        "severity": "INFO",
+        "displayMessage": "User logout from Okta",
+        "uuid": "b0c1d2e3-f4a5-6789-3456-012345678901"
+    },
+    {
+        "actor": {
+            "id": "00u3e4f5g6h7i8j9k0l1",
+            "type": "User",
+            "alternateId": "alex.reeves@syntheticorp.com",
+            "displayName": "Alex Reeves"
+        },
+        "client": {
+            "ipAddress": "192.0.2.210",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Atlanta",
+                "state": "Georgia",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxA0j1K2l3M4n5O6p7Q"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3e4f5g6h7i8j9k0l1",
+                "type": "User",
+                "alternateId": "alex.reeves@syntheticorp.com",
+                "displayName": "Alex Reeves"
+            }
+        ],
+        "transaction": {
+            "id": "KoP5qR6sT7uV8wX9y",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn",
+                "dtHash": "uv12wx34yz56ab78cd90ef12gh34ij56kl78mn90",
+                "authnRequestId": "req_j0k1l2m3n4o5",
+                "requestId": "Mj5o6P7q8R9s0T1u2V",
+                "threatSuspected": "false",
+                "url": "/api/v1/authn?rememberDevice=true"
+            }
+        },
+        "eventType": "user.session.start",
+        "published": "2024-03-15T11:05:44.000Z",
+        "severity": "INFO",
+        "displayMessage": "User login to Okta",
+        "uuid": "c1d2e3f4-a5b6-7890-4567-123456789012"
+    },
+    {
+        "actor": {
+            "id": "00u3e4f5g6h7i8j9k0l1",
+            "type": "User",
+            "alternateId": "alex.reeves@syntheticorp.com",
+            "displayName": "Alex Reeves"
+        },
+        "client": {
+            "ipAddress": "192.0.2.210",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Atlanta",
+                "state": "Georgia",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 1,
+            "externalSessionId": "idxA0j1K2l3M4n5O6p7Q"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u3e4f5g6h7i8j9k0l1",
+                "type": "User",
+                "alternateId": "alex.reeves@syntheticorp.com",
+                "displayName": "Alex Reeves"
+            }
+        ],
+        "transaction": {
+            "id": "KoP5qR6sT7uV8wX9y",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/authn/factors/ostf5e6f7g8h9i/verify",
+                "dtHash": "uv12wx34yz56ab78cd90ef12gh34ij56kl78mn90",
+                "factor": "OKTA_VERIFY_PUSH",
+                "requestId": "Mj5o6P7q8R9s0T1u2W",
+                "threatSuspected": "false"
+            }
+        },
+        "eventType": "user.authentication.auth_via_mfa",
+        "published": "2024-03-15T11:06:01.000Z",
+        "severity": "INFO",
+        "displayMessage": "Authentication of user via MFA",
+        "uuid": "d2e3f4a5-b6c7-8901-5678-234567890123"
+    },
+    {
+        "actor": {
+            "id": "00u0x1y2z3a4b5c6d7e8",
+            "type": "User",
+            "alternateId": "admin@syntheticorp.com",
+            "displayName": "Okta Admin"
+        },
+        "client": {
+            "ipAddress": "198.51.100.200",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "os": "Mac OS X",
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "city": "Denver",
+                "state": "Colorado",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxU4d5E6f7G8h9I0j1K"
+        },
+        "securityContext": {
+            "asOrg": "Synthetic Telecom Inc.",
+            "asNumber": 20115,
+            "isp": "Synthetic Telecom"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "0oa3c4d5e6f7g8h9i0j1",
+                "type": "AppInstance",
+                "alternateId": "Syntheticorp GitHub Enterprise",
+                "displayName": "Syntheticorp GitHub Enterprise"
+            },
+            {
+                "id": "00u3e4f5g6h7i8j9k0l1",
+                "type": "User",
+                "alternateId": "alex.reeves@syntheticorp.com",
+                "displayName": "Alex Reeves"
+            }
+        ],
+        "transaction": {
+            "id": "LpQ6rS7tU8vW9xY0z",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/apps/0oa3c4d5e6f7g8h9i0j1/users",
+                "requestId": "Nk6p7Q8r9S0t1U2v3W",
+                "threatSuspected": "false",
+                "changedAttributes": "profile,credentials"
+            }
+        },
+        "eventType": "app.user_membership.add",
+        "published": "2024-03-15T11:15:22.000Z",
+        "severity": "INFO",
+        "displayMessage": "Add user to application membership",
+        "uuid": "e3f4a5b6-c7d8-9012-6789-345678901234"
+    },
+    {
+        "actor": {
+            "id": "00u9a0b1c2d3e4f5g6h7",
+            "type": "User",
+            "alternateId": "system@okta.com",
+            "displayName": "Okta System"
+        },
+        "client": {
+            "ipAddress": "192.0.2.33",
+            "userAgent": {
+                "rawUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+                "os": "iOS",
+                "browser": "SAFARI"
+            },
+            "geographicalContext": {
+                "city": "Miami",
+                "state": "Florida",
+                "country": "United States"
+            }
+        },
+        "authenticationContext": {
+            "authenticationStep": 0,
+            "externalSessionId": "idxZ9i0J1k2L3m4N5o6P"
+        },
+        "securityContext": {
+            "asOrg": "Metro Fiber Corp.",
+            "asNumber": 7018,
+            "isp": "Metro Fiber"
+        },
+        "outcome": {
+            "result": "SUCCESS"
+        },
+        "target": [
+            {
+                "id": "00u1h2i3j4k5l6m7n8o9",
+                "type": "User",
+                "alternateId": "rachel.thompson@syntheticorp.com",
+                "displayName": "Rachel Thompson"
+            }
+        ],
+        "transaction": {
+            "id": "MqR7sT8uV9wX0yZ1a",
+            "type": "WEB"
+        },
+        "debugContext": {
+            "debugData": {
+                "requestUri": "/api/v1/sessions/me/lifecycle/refresh",
+                "requestId": "Ol7q8R9s0T1u2V3w4X",
+                "policyType": "OKTA_SIGN_ON",
+                "dtHash": "wx34yz56ab78cd90ef12gh34ij56kl78mn90op12",
+                "threatSuspected": "false",
+                "policyRuleAction": "ALLOW"
+            }
+        },
+        "eventType": "policy.evaluate_sign_on",
+        "published": "2024-03-15T11:20:15.000Z",
+        "severity": "INFO",
+        "displayMessage": "Evaluation of sign-on policy",
+        "uuid": "f4a5b6c7-d8e9-0123-7890-456789012345"
+    }
+]
