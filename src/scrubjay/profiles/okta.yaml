@@ -77,6 +77,11 @@ fields:
     tier: 2
     description: "Debug context catch-all — Okta dumps various sensitive data here"
 
+  - field: "_raw"
+    type: FREETEXT
+    tier: 1
+    description: "Splunk raw event text — contains full log with names, emails, IDs"
+
   # ── Tier 3: Never scrub ──
 
   - field: "client.ipAddress"
